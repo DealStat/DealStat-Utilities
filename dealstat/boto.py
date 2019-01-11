@@ -28,6 +28,9 @@ class Boto:
     def upload_file(self, file_path, location):
         return self.resource.Bucket(location['bucket']).upload_file(file_path, location['key'])
 
+    def download_file(self, file_path, location):
+        return self.resource.Bucket(location['bucket']).download_file(location['key'], file_path)
+
 
     def list_bucket(self, bucket, prefix=None, exclude_dirs=True):
         bucket = self.resource.Bucket(bucket)
