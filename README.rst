@@ -1,5 +1,5 @@
 =================
-DealStat Utilties
+DealStat Utilities
 =================
 
 
