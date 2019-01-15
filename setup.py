@@ -14,6 +14,7 @@ with open('HISTORY.rst') as history_file:
 requirements = [ 
     'boto3>=1.9.77',
     'regex>=2018.11.22',
+    'numpy>=1.16.0',
     'usaddress==0.5.10'
 ]
 
@@ -47,6 +48,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/DealStat/DealStat-Utilities',
-    version='0.1.3',
+    version='0.1.5',
     zip_safe=False,
 )
