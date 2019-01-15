@@ -24,13 +24,43 @@ DealStat Utilities
 
 
 * Free software: MIT license
-* Documentation: https://dealstat.readthedocs.io.
 
 
 Features
 --------
 
-* TODO
+### Boto
+Simplifies some of AWS' Boto3 functionality (at the moment, just S3)
+* First save `'AWS_ACCESS_KEY_ID'` and `'AWS_SECRET_ACCESS_KEY'` as environment variables
+
+```
+from dealstat.boto import Boto
+s3 = Boto('s3')
+
+location1 = {'bucket':'<some-bucket>', 'key': '<some-key'>}
+location2 = {'bucket':'<some-other-bucket>', 'key': '<some-other-key'>}
+
+# Get temporary pre-signed url
+url = s3.get_temp_url(location1)
+
+# Move object from one bucket/key to another
+s3.move_object(location1, location2)
+
+# Upload file
+file_path = '/some/file/path.txt'
+s3.upload_file(file_path, location1)
+
+# Download file
+destination_file_path = 'local/file/path2.txt'
+s3.download_file(destination_file_path, location2)
+
+# List contents of bucket
+# Use prefix='some-prefix' to search for specific key prefixes
+# Use exclude_dirs=True to not return directories in result
+s3.list_bucket('<some-bucket'>, prefix=None, exclude_dirs=True)
+
+```
+
 
 Credits
 -------
