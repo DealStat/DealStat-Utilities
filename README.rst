@@ -25,6 +25,15 @@ DealStat Utilities
 
 * Free software: MIT license
 
+Dealstat
+--------
+Generic functions that may be moved to specific modules at some point:::
+
+    from dealstat.dealstat import *
+    
+    # generate random letter based ID of given length
+    my_id = unique_id(30)
+
 
 Boto
 --------
