@@ -60,6 +60,7 @@ Simplifies some of AWS' Boto3 functionality (at the moment, just S3)
 Machine Learning
 --------
 Random utilities useful in ML prototyping
+
 * Download and use Standform NLP Glove Embedings ::
 
     from dealstat.ml import Embeddings
