@@ -26,11 +26,10 @@ DealStat Utilities
 * Free software: MIT license
 
 
-Features
+Boto
 --------
-
-### Boto
 Simplifies some of AWS' Boto3 functionality (at the moment, just S3)
+
 * First save `'AWS_ACCESS_KEY_ID'` and `'AWS_SECRET_ACCESS_KEY'` as environment variables::
 
     from dealstat.boto import Boto
