@@ -57,6 +57,28 @@ Simplifies some of AWS' Boto3 functionality (at the moment, just S3)
     # Use exclude_dirs=True to not return directories in result
     s3.list_bucket('<some-bucket'>, prefix=None, exclude_dirs=True)
 
+Machine Learning
+--------
+Random utilities useful in ML prototyping
+* Download and use Standform NLP Glove Embedings ::
+
+    from dealstat.ml import Embeddings
+    
+    Embed = Embeddings()
+    
+    # Download embeddings
+    Embed.download_embeddings()
+    
+    # Unzip embeddings
+    Embed.extract_embeddings()
+    
+    # Generate embeddings look up dict for given dimension
+    dim = 200
+    embedding_dict = Embed.generate(loc='.', dim=dim)
+    
+    
+
+
 
 Credits
 -------
