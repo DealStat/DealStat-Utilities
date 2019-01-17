@@ -1,6 +1,8 @@
 import os
 import boto3
 
+from dealstat.dealstat import compress_dir
+
 class Boto:
 
     def __init__(self, service, aws_access_key_id=None, aws_secret_access_key=None):
@@ -25,11 +27,19 @@ class Boto:
         if delete_original:
             self.resource.Object(Bucket=old_location['bucket'], Key=old_location['key']).delete()
 
+
     def upload_file(self, file_path, location):
         return self.resource.Bucket(location['bucket']).upload_file(file_path, location['key'])
 
+
     def download_file(self, file_path, location):
         return self.resource.Bucket(location['bucket']).download_file(location['key'], file_path)
+
+
+    def compress_and_upload(self, dir_path, location):
+        compressed_file = compress_dir(dir_path)
+        self.upload_file(compressed_file, location)
+        os.remove(compressed_file)
 
 
     def list_bucket(self, bucket, prefix=None, exclude_dirs=True):
@@ -49,4 +59,5 @@ class Boto:
         return final_result
 
 if __name__ == '__main__':
-    pass
+    s3 = Boto('s3')
+    s3.zip_and_upload('/Users/ecatkins/Downloads/Sample_Deeds', {'bucket':'dealstat-public-misc', 'key':'lol.tar.gz'})

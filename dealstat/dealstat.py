@@ -2,11 +2,10 @@
 
 """Main module."""
 
-import random, string
+import random, string, tarfile
 
-# STANDARD IMPORTS
-def unique_id():
-    return ''.join(random.choice(string.ascii_lowercase) for i in range(25))
+def unique_id(length=25):
+    return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
 
 
 def compare_figures(figure1, figure2, thresh = 0.99):
@@ -18,3 +17,15 @@ def compare_figures(figure1, figure2, thresh = 0.99):
         return True
     else:
         return False
+
+
+def compress_dir(folder_location):
+	compress_name = folder_location.split('/')[-1] + '.tar.gz'
+	tar = tarfile.open(compress_name, 'w:gz')
+	tar.add(folder_location, arcname='TarName')
+	tar.close()
+	return compress_name
+
+
+if __name__ == '__main__':
+	compress_dir('/Users/ecatkins/Downloads/Sample_Deeds')
